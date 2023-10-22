@@ -1,3 +1,13 @@
+![](https://komarev.com/ghpvc/?username=Dario-Maselli&color=dc143c)
+![Visits Badge](https://badges.pufler.dev/visits/Dario-Maselli/Dario-Maselli)
+![Years Badge](https://badges.pufler.dev/years/Dario-Maselli)<!--(https://badges.pufler.dev)-->
+![Repos Badge](https://badges.pufler.dev/repos/Dario-Maselli)
+![Updated Badge](https://badges.pufler.dev/updated/Dario-Maselli/Dario-Maselli)
+![Created Badge](https://badges.pufler.dev/created/Dario-Maselli/Dario-Maselli)
+![Commits Badge](https://badges.pufler.dev/commits/monthly/Dario-Maselli)
+
+
+
 ### Hi there 👋
 
 <!--
