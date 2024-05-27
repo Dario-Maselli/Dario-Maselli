@@ -22,9 +22,6 @@ jobs:
           sudo dockerd &>/dev/null &
           sleep 15
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
       - uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
