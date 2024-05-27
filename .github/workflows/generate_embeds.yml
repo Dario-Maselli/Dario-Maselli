@@ -12,21 +12,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Ensure Docker Daemon is Running
-        run: |
-          sudo service docker start || sudo dockerd &>/dev/null &
-          sleep 10
-
-      #   - name: Set up Docker Buildx
-      #     uses: docker/setup-buildx-action@v3
-      #     with:
-      #       driver-opts: image=moby/buildkit:latest
-      #     env:
-      #       DOCKER_BUILDKIT: 1
-
-      - name: Run Metrics
-        uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-        env:
-          DOCKER_HOST: unix:///var/run/docker.sock
