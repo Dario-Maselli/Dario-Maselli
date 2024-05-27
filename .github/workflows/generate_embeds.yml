@@ -16,11 +16,16 @@ jobs:
         run: |
           curl -fsSL https://get.docker.com -o get-docker.sh
           sh get-docker.sh
-          sudo usermod -aG docker $USER
+
+      - name: Set up Docker in Rootless Mode
+        run: |
+          export PATH=/usr/bin:$PATH
+          dockerd-rootless-setuptool.sh install
+          export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
       - name: Start Docker Daemon
         run: |
-          sudo dockerd &>/dev/null &
+          dockerd-rootless.sh &>/dev/null &
           sleep 10
 
       - name: Set up Docker Buildx
