@@ -12,20 +12,9 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Install Docker
+      - name: Ensure Docker Daemon is Running
         run: |
-          curl -fsSL https://get.docker.com/rootless | sh
-          export PATH=/usr/bin:$PATH
-          dockerd-rootless-setuptool.sh install
-
-      - name: Set up Docker Environment
-        run: |
-          export PATH=/usr/bin:$PATH
-          export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-
-      - name: Start Docker Daemon
-        run: |
-          dockerd-rootless.sh &>/dev/null &
+          docker info || sudo service docker start
           sleep 10
 
       - name: Set up Docker Buildx
