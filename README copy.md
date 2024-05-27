@@ -1,0 +1,26 @@
+![](https://komarev.com/ghpvc/?username=Dario-Maselli&color=dc143c)
+![Visits Badge](https://badges.pufler.dev/visits/Dario-Maselli/Dario-Maselli)
+![Years Badge](https://badges.pufler.dev/years/Dario-Maselli)<!--(https://badges.pufler.dev)-->
+![Repos Badge](https://badges.pufler.dev/repos/Dario-Maselli)
+![Updated Badge](https://badges.pufler.dev/updated/Dario-Maselli/Dario-Maselli)
+![Created Badge](https://badges.pufler.dev/created/Dario-Maselli/Dario-Maselli)
+![Commits Badge](https://badges.pufler.dev/commits/monthly/Dario-Maselli)
+
+
+
+### Hi there 👋
+
+<!--
+**Dario-Maselli/Dario-Maselli** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+
+Here are some ideas to get you started:
+
+- 🔭 I’m currently working on ...
+- 🌱 I’m currently learning ...
+- 👯 I’m looking to collaborate on ...
+- 🤔 I’m looking for help with ...
+- 💬 Ask me about ...
+- 📫 How to reach me: ...
+- 😄 Pronouns: ...
+- ⚡ Fun fact: ...
+-->
