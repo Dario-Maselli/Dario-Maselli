@@ -1,17 +1,32 @@
-name: Metrics
+name: Update README
+
 on:
-  # Schedule daily updates
-  schedule: [{ cron: "0 0 * * *" }]
-  # (optional) Run workflow manually
-  workflow_dispatch:
-  # (optional) Run workflow when pushing on master/main
-  push: { branches: ["master", "main"] }
+  schedule:
+    - cron: "0 0 * * *" # Runs every day at midnight
+  push:
+    branches:
+      - main
+
 jobs:
-  github-metrics:
+  update-readme:
     runs-on: self-hosted
-    permissions:
-      contents: write
+
     steps:
-      - uses: lowlighter/metrics@latest
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v5
         with:
-          token: ${{ secrets.METRICS_TOKEN }}
+          python-version: "3.10"
+
+      - name: Update README with contributions
+        run: |
+          python update_readme.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git commit -m 'Update README with latest contributions'
+          git push
