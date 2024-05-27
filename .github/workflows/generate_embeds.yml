@@ -14,15 +14,18 @@ jobs:
     steps:
       - name: Install Docker
         run: |
-          curl -fsSL https://get.docker.com -o get-docker.sh
-          sh get-docker.sh
-          sudo usermod -aG docker $USER
-        env:
-          USER: ${{ github.run_id }}
+          curl -fsSL https://get.docker.com/rootless | sh
+          export PATH=/usr/bin:$PATH
+          dockerd-rootless-setuptool.sh install
+
+      - name: Set up Docker Environment
+        run: |
+          export PATH=/usr/bin:$PATH
+          export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
       - name: Start Docker Daemon
         run: |
-          sudo service docker start
+          dockerd-rootless.sh &>/dev/null &
           sleep 10
 
       - name: Set up Docker Buildx
