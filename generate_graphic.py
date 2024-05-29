@@ -99,6 +99,19 @@ def count_languages(username, token, organization=None):
 def generate_color():
     return "#{:06x}".format(random.randint(0, 0xFFFFFF))
 
+def create_3d_contrib_graph(contributions):
+    dates = [c.date() for c in contributions]
+    dates_count = {date: dates.count(date) for date in set(dates)}
+    max_contrib = max(dates_count.values(), default=1)
+    days = sorted(dates_count.keys())
+
+    graph_elements = []
+    for i, day in enumerate(days):
+        height = (dates_count[day] / max_contrib) * 100
+        graph_elements.append(f'<rect x="{i*5}" y="{100-height}" width="4" height="{height}" fill="#66b3ff"/>')
+    
+    return "\n".join(graph_elements)
+
 def create_svg(contributions, languages_count, languages):
     # Define colors for the pie chart
     colors = ["#ff9999","#66b3ff","#99ff99","#ffcc99","#c2c2f0","#ffb3e6","#c2f0c2","#ff6666"]
@@ -109,9 +122,12 @@ def create_svg(contributions, languages_count, languages):
     total = sum(languages.values())
     angles = [(value / total) * 360 for value in languages.values()]
     
+    # Create the 3D contribution graph
+    contrib_graph = create_3d_contrib_graph(contributions)
+    
     # Create the SVG content
     svg_content = f"""
-    <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+    <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
         <rect width="100%" height="100%" fill="rgb(10, 10, 30)"/>
         <text x="10" y="20" font-family="Arial" font-size="20" fill="white">GitHub Contributions</text>
         <text x="10" y="50" font-family="Arial" font-size="14" fill="white">Contributions in the last 7 days:</text>
@@ -144,7 +160,13 @@ def create_svg(contributions, languages_count, languages):
         """
         start_angle += angle
     
-    svg_content += "</g></svg>"
+    svg_content += "</g>"
+    svg_content += f"""
+        <g transform="translate(100, 350)">
+            {contrib_graph}
+        </g>
+    </svg>
+    """
 
     with open("contributions.svg", "w") as svg_file:
         svg_file.write(svg_content)

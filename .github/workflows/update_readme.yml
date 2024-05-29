@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install matplotlib PyGithub
+          pip install matplotlib PyGithub numpy
 
       - name: Run script
         run: python generate_graphic.py
