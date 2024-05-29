@@ -32,7 +32,7 @@ def count_languages(username, token, organization=None):
     g = Github(token)
     languages = set()
 
-    # Include user repositories 
+    # Include user repositories
     user = g.get_user(username)
     repos = user.get_repos()
 
@@ -44,9 +44,8 @@ def count_languages(username, token, organization=None):
     # Include organization repositories if specified
     if organization:
         org = g.get_organization(organization)
-        org_repos = org.get_repos(type='all')
         print("Organization Repositories:")
-        for repo in org_repos:
+        for repo in org.get_repos(type='all'):
             print(repo.name)
             contributors = repo.get_contributors()
             for contributor in contributors:
