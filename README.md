@@ -1,4 +1,5 @@
 # My GitHub Profile
 
 <!-- START CONTRIBUTIONS -->
-<!-- END CONTRIBUTIONS -->
+
+![Contributions](contributions.png)
