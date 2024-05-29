@@ -4,8 +4,11 @@
 
 ## Work In Progress
 <!-- START CONTRIBUTIONS -->
+## This is a 'Work In Progress'
 
 ![Contributions](contributions.png)
+
 Total Programming Languages Used: 4
-Languages: Python, JavaScript, Shell, Batchfile
+
+Languages: JavaScript, Shell, Batchfile, Python
 <!-- END CONTRIBUTIONS -->
