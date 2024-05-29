@@ -31,7 +31,7 @@ def plot_contributions(contributions):
 def count_languages(username, token, organization=None):
     g = Github(token)
     languages = set()
-    exclude_languages = {'Ruby', 'Objective-C', 'Blade', 'C'}  # Set of languages to exclude
+    exclude_languages = {'Ruby', 'Objective-C'}  # Set of languages to exclude
 
     # Include user repositories
     user = g.get_user(username)
@@ -46,9 +46,7 @@ def count_languages(username, token, organization=None):
     # Include organization repositories if specified
     if organization:
         org = g.get_organization(organization)
-        print("Organization Repositories:")
         for repo in org.get_repos(type='all'):
-            print(repo.name)
             contributors = repo.get_contributors()
             for contributor in contributors:
                 if contributor.login == username:
@@ -59,7 +57,24 @@ def count_languages(username, token, organization=None):
 
     return len(languages), languages
 
-def update_readme(languages_count, languages):
+def create_svg(contributions, languages_count, languages):
+    svg_content = f"""
+    <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100%" height="100%" fill="white"/>
+        <text x="10" y="20" font-family="Arial" font-size="20" fill="black">GitHub Contributions</text>
+        <text x="10" y="50" font-family="Arial" font-size="14" fill="black">Contributions in the last 7 days:</text>
+        <text x="10" y="70" font-family="Arial" font-size="14" fill="black">{len(contributions)}</text>
+        <text x="10" y="100" font-family="Arial" font-size="20" fill="black">Programming Languages Used</text>
+        <text x="10" y="130" font-family="Arial" font-size="14" fill="black">Total Languages:</text>
+        <text x="10" y="150" font-family="Arial" font-size="14" fill="black">{languages_count}</text>
+        <text x="10" y="180" font-family="Arial" font-size="14" fill="black">Languages:</text>
+        <text x="10" y="200" font-family="Arial" font-size="14" fill="black">{", ".join(languages)}</text>
+    </svg>
+    """
+    with open("contributions.svg", "w") as svg_file:
+        svg_file.write(svg_content)
+
+def update_readme():
     with open("README.md", "r") as file:
         lines = file.readlines()
 
@@ -69,15 +84,12 @@ def update_readme(languages_count, languages):
             if line.strip() == "<!-- START CONTRIBUTIONS -->":
                 in_marker = True
                 file.write(line)
-                file.write("## This is a 'Work In Progress'\n")
                 file.write("\n![Contributions](contributions.png)\n")
-                file.write(f"\nTotal Programming Languages Used: {languages_count}\n")
-                file.write("\nLanguages: " + ", ".join(languages) + "\n")
+                file.write("\n![Contributions](contributions.svg)\n")
             elif line.strip() == "<!-- END CONTRIBUTIONS -->":
                 in_marker = False
             elif not in_marker:
                 file.write(line)
-        file.write("<!-- END CONTRIBUTIONS -->")
 
 if __name__ == "__main__":
     username = os.getenv('USERNAME')
@@ -91,4 +103,5 @@ if __name__ == "__main__":
     plot_contributions(contributions)
     
     languages_count, languages = count_languages(username, token, organization)
-    update_readme(languages_count, languages)
+    create_svg(contributions, languages_count, languages)
+    update_readme()
