@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from github import Github
 import datetime
 import os
+from collections import defaultdict
 from math import cos, sin, radians, pi
 import random
 
@@ -32,7 +33,7 @@ def plot_contributions(contributions):
 
 def count_languages(username, token, organization=None):
     g = Github(token)
-    languages = {}
+    languages = defaultdict(int)
     exclude_languages = {'Ruby', 'Objective-C'}  # Set of languages to exclude
 
     # Include user repositories
@@ -40,13 +41,14 @@ def count_languages(username, token, organization=None):
     repos = user.get_repos()
 
     for repo in repos:
-        repo_languages = repo.get_languages()
-        for language, bytes_of_code in repo_languages.items():
-            if language not in exclude_languages:
-                if language in languages:
-                    languages[language] += bytes_of_code
-                else:
-                    languages[language] = bytes_of_code
+        commits = repo.get_commits(author=username)
+        for commit in commits:
+            files = commit.files
+            for file in files:
+                extension = file.filename.split('.')[-1]
+                language = repo.language_for_extension(extension)
+                if language not in exclude_languages:
+                    languages[language] += file.additions + file.deletions
 
     # Include organization repositories if specified
     if organization:
@@ -54,20 +56,18 @@ def count_languages(username, token, organization=None):
         print("Organization Repositories:")
         for repo in org.get_repos(type='all'):
             print(repo.name)
-            contributors = repo.get_contributors()
-            for contributor in contributors:
-                if contributor.login == username:
-                    repo_languages = repo.get_languages()
-                    for language, bytes_of_code in repo_languages.items():
-                        if language not in exclude_languages:
-                            if language in languages:
-                                languages[language] += bytes_of_code
-                            else:
-                                languages[language] = bytes_of_code
+            commits = repo.get_commits(author=username)
+            for commit in commits:
+                files = commit.files
+                for file in files:
+                    extension = file.filename.split('.')[-1]
+                    language = repo.language_for_extension(extension)
+                    if language not in exclude_languages:
+                        languages[language] += file.additions + file.deletions
 
-    # Get the top 5 languages by bytes of code
+    # Get the top 5 languages by lines of code changed
     sorted_languages = sorted(languages.items(), key=lambda item: item[1], reverse=True)[:5]
-    top_languages = {language: bytes_of_code for language, bytes_of_code in sorted_languages}
+    top_languages = {language: lines for language, lines in sorted_languages}
 
     return len(top_languages), top_languages
 
