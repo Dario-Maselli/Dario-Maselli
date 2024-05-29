@@ -120,7 +120,7 @@ def update_readme():
     with open("README.md", "r") as file:
         lines = file.readlines()
 
-    with open("README.md", "w") as file):
+    with open("README.md", "w") as file:
         in_marker = False
         for line in lines:
             if line.strip() == "<!-- START CONTRIBUTIONS -->":
