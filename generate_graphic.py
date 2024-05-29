@@ -44,7 +44,7 @@ def count_languages(username, token, organization=None):
     # Include organization repositories if specified
     if organization:
         org = g.get_organization(organization)
-        org_repos = org.get_repos()
+        org_repos = org.get_repos(type='all')
         print("Organization Repositories:")
         for repo in org_repos:
             print(repo.name)
