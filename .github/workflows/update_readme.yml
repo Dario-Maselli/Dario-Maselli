@@ -47,7 +47,7 @@ jobs:
 
       - name: Commit changes
         run: |
-          git add README.md contributions.png
+          git add -A .
           git commit -m "Update contributions graphic"
 
       - name: Push changes
