@@ -10,5 +10,5 @@
 
 Total Programming Languages Used: 4
 
-Languages: Python, JavaScript, Batchfile, Shell
+Languages: Python, JavaScript, Shell, Batchfile
 <!-- END CONTRIBUTIONS -->
