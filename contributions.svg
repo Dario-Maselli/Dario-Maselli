@@ -1,13 +1,91 @@
 
     <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
-        <rect width="100%" height="100%" fill="white"/>
-        <text x="10" y="20" font-family="Arial" font-size="20" fill="black">GitHub Contributions</text>
-        <text x="10" y="50" font-family="Arial" font-size="14" fill="black">Contributions in the last 7 days:</text>
-        <text x="10" y="70" font-family="Arial" font-size="14" fill="black">194</text>
-        <text x="10" y="100" font-family="Arial" font-size="20" fill="black">Programming Languages Used</text>
-        <text x="10" y="130" font-family="Arial" font-size="14" fill="black">Total Languages:</text>
-        <text x="10" y="150" font-family="Arial" font-size="14" fill="black">16</text>
-        <text x="10" y="180" font-family="Arial" font-size="14" fill="black">Languages:</text>
-        <text x="10" y="200" font-family="Arial" font-size="14" fill="black">PHP, Kotlin, CSS, C++, Blade, CMake, Shell, Dart, Swift, HTML, JavaScript, Python, Dockerfile, C, Vue, Batchfile</text>
-    </svg>
+        <rect width="100%" height="100%" fill="rgb(10, 10, 30)"/>
+        <text x="10" y="20" font-family="Arial" font-size="20" fill="white">GitHub Contributions</text>
+        <text x="10" y="50" font-family="Arial" font-size="14" fill="white">Contributions in the last 7 days:</text>
+        <text x="10" y="70" font-family="Arial" font-size="14" fill="white">196</text>
+        <text x="10" y="100" font-family="Arial" font-size="20" fill="white">Programming Languages Used</text>
+        <text x="10" y="130" font-family="Arial" font-size="14" fill="white">Total Languages:</text>
+        <text x="10" y="150" font-family="Arial" font-size="14" fill="white">16</text>
+        <g transform="translate(300, 200)">
     
+        <path d="M0,0 L100.0,0.0 A100,100 0 0,1 97.59454442747314,21.801488435287418 Z" fill="#ff9999" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.0s" fill="freeze"/>
+        </path>
+        <text x="97.59454442747314" y="21.801488435287418" font-family="Arial" font-size="14" fill="white">Python</text>
+        
+        <path d="M0,0 L97.59454442747314,21.801488435287418 A100,100 0 0,1 97.45519788471057,22.416163928110073 Z" fill="#66b3ff" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.5s" fill="freeze"/>
+        </path>
+        <text x="97.45519788471057" y="22.416163928110073" font-family="Arial" font-size="14" fill="white">Shell</text>
+        
+        <path d="M0,0 L97.45519788471057,22.416163928110073 A100,100 0 0,1 97.43036548340169,22.523851397369143 Z" fill="#99ff99" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.0s" fill="freeze"/>
+        </path>
+        <text x="97.43036548340169" y="22.523851397369143" font-family="Arial" font-size="14" fill="white">Batchfile</text>
+        
+        <path d="M0,0 L97.43036548340169,22.523851397369143 A100,100 0 0,1 97.42456383372472,22.54893260907259 Z" fill="#ffcc99" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.5s" fill="freeze"/>
+        </path>
+        <text x="97.42456383372472" y="22.54893260907259" font-family="Arial" font-size="14" fill="white">JavaScript</text>
+        
+        <path d="M0,0 L97.42456383372472,22.54893260907259 A100,100 0 0,1 -99.75588449534281,-6.983087322368364 Z" fill="#c2c2f0" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.0s" fill="freeze"/>
+        </path>
+        <text x="-99.75588449534281" y="-6.983087322368364" font-family="Arial" font-size="14" fill="white">PHP</text>
+        
+        <path d="M0,0 L-99.75588449534281,-6.983087322368364 A100,100 0 0,1 -5.695291734613777,-99.8376865319787 Z" fill="#ffb3e6" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.5s" fill="freeze"/>
+        </path>
+        <text x="-5.695291734613777" y="-99.8376865319787" font-family="Arial" font-size="14" fill="white">Vue</text>
+        
+        <path d="M0,0 L-5.695291734613777,-99.8376865319787 A100,100 0 0,1 49.45022570834298,-86.91763444430558 Z" fill="#c2f0c2" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="3.0s" fill="freeze"/>
+        </path>
+        <text x="49.45022570834298" y="-86.91763444430558" font-family="Arial" font-size="14" fill="white">Blade</text>
+        
+        <path d="M0,0 L49.45022570834298,-86.91763444430558 A100,100 0 0,1 49.82607288522437,-86.7027246448248 Z" fill="#ff6666" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="3.5s" fill="freeze"/>
+        </path>
+        <text x="49.82607288522437" y="-86.7027246448248" font-family="Arial" font-size="14" fill="white">Dockerfile</text>
+        
+        <path d="M0,0 L49.82607288522437,-86.7027246448248 A100,100 0 0,1 99.85563533574016,-5.371414310559196 Z" fill="#d9fa88" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="4.0s" fill="freeze"/>
+        </path>
+        <text x="99.85563533574016" y="-5.371414310559196" font-family="Arial" font-size="14" fill="white">Dart</text>
+        
+        <path d="M0,0 L99.85563533574016,-5.371414310559196 A100,100 0 0,1 99.86735813844012,-5.14886185953147 Z" fill="#49e54c" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="4.5s" fill="freeze"/>
+        </path>
+        <text x="99.86735813844012" y="-5.14886185953147" font-family="Arial" font-size="14" fill="white">Kotlin</text>
+        
+        <path d="M0,0 L99.86735813844012,-5.14886185953147 A100,100 0 0,1 99.87606910712768,-4.977029205083809 Z" fill="#336bdf" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="5.0s" fill="freeze"/>
+        </path>
+        <text x="99.87606910712768" y="-4.977029205083809" font-family="Arial" font-size="14" fill="white">Swift</text>
+        
+        <path d="M0,0 L99.87606910712768,-4.977029205083809 A100,100 0 0,1 99.9397896675536,-3.4696456887047105 Z" fill="#62a525" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="5.5s" fill="freeze"/>
+        </path>
+        <text x="99.9397896675536" y="-3.4696456887047105" font-family="Arial" font-size="14" fill="white">C++</text>
+        
+        <path d="M0,0 L99.9397896675536,-3.4696456887047105 A100,100 0 0,1 99.97599006417401,-2.1912121504271393 Z" fill="#e671d4" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="6.0s" fill="freeze"/>
+        </path>
+        <text x="99.97599006417401" y="-2.1912121504271393" font-family="Arial" font-size="14" fill="white">CMake</text>
+        
+        <path d="M0,0 L99.97599006417401,-2.1912121504271393 A100,100 0 0,1 99.99957007807724,-0.2932306254799904 Z" fill="#57a5e4" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="6.5s" fill="freeze"/>
+        </path>
+        <text x="99.99957007807724" y="-0.2932306254799904" font-family="Arial" font-size="14" fill="white">HTML</text>
+        
+        <path d="M0,0 L99.99957007807724,-0.2932306254799904 A100,100 0 0,1 99.99980706001391,-0.19643818364061316 Z" fill="#6484c1" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="7.0s" fill="freeze"/>
+        </path>
+        <text x="99.99980706001391" y="-0.19643818364061316" font-family="Arial" font-size="14" fill="white">C</text>
+        
+        <path d="M0,0 L99.99980706001391,-0.19643818364061316 A100,100 0 0,1 100.0,6.432490598706547e-14 Z" fill="#6a7b56" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="7.5s" fill="freeze"/>
+        </path>
+        <text x="100.0" y="6.432490598706547e-14" font-family="Arial" font-size="14" fill="white">CSS</text>
+        </g></svg>
