@@ -45,15 +45,15 @@ def count_languages(username, token, organization=None):
     if organization:
         org = g.get_organization(organization)
         org_repos = org.get_repos()
-        print(org_repos)
+        print("Organization Repositories:")
         for repo in org_repos:
+            print(repo.name)
             contributors = repo.get_contributors()
-            print(contributors)
-            if any(contributor.login == username for contributor in contributors):
-                repo_languages = repo.get_languages()
-                for language in repo_languages.keys():
-                    print(language)
-                    languages.add(language)
+            for contributor in contributors:
+                if contributor.login == username:
+                    repo_languages = repo.get_languages()
+                    for language in repo_languages.keys():
+                        languages.add(language)
 
     return len(languages), languages
 
