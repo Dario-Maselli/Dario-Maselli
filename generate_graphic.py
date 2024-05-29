@@ -49,8 +49,8 @@ def update_readme():
 
 
 if __name__ == "__main__":
-    username = os.getenv('GITHUB_USERNAME')
-    token = os.getenv('GITHUB_TOKEN')
+    username = os.getenv('USERNAME')
+    token = os.getenv('PAT_TOKEN')
 
     contributions = get_contributions(username, token)
     plot_contributions(contributions)
