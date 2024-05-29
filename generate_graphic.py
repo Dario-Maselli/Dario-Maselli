@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from github import Github
 import datetime
 import os
+from math import cos, sin, radians
 
 def get_contributions(username, token):
     g = Github(token)
@@ -30,7 +31,7 @@ def plot_contributions(contributions):
 
 def count_languages(username, token, organization=None):
     g = Github(token)
-    languages = set()
+    languages = {}
     exclude_languages = {'Ruby', 'Objective-C'}  # Set of languages to exclude
 
     # Include user repositories
@@ -39,38 +40,74 @@ def count_languages(username, token, organization=None):
 
     for repo in repos:
         repo_languages = repo.get_languages()
-        for language in repo_languages.keys():
+        for language, bytes_of_code in repo_languages.items():
             if language not in exclude_languages:
-                languages.add(language)
+                if language in languages:
+                    languages[language] += bytes_of_code
+                else:
+                    languages[language] = bytes_of_code
 
     # Include organization repositories if specified
     if organization:
         org = g.get_organization(organization)
+        print("Organization Repositories:")
         for repo in org.get_repos(type='all'):
+            print(repo.name)
             contributors = repo.get_contributors()
             for contributor in contributors:
                 if contributor.login == username:
                     repo_languages = repo.get_languages()
-                    for language in repo_languages.keys():
+                    for language, bytes_of_code in repo_languages.items():
                         if language not in exclude_languages:
-                            languages.add(language)
+                            if language in languages:
+                                languages[language] += bytes_of_code
+                            else:
+                                languages[language] = bytes_of_code
 
     return len(languages), languages
 
 def create_svg(contributions, languages_count, languages):
+    # Define colors for the pie chart
+    colors = ["#ff9999","#66b3ff","#99ff99","#ffcc99","#c2c2f0","#ffb3e6","#c2f0c2","#ff6666"]
+    colors = colors[:languages_count]
+    
+    # Calculate the pie chart data
+    total = sum(languages.values())
+    angles = [(value / total) * 360 for value in languages.values()]
+    
+    # Create the SVG content
     svg_content = f"""
     <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
-        <rect width="100%" height="100%" fill="white"/>
-        <text x="10" y="20" font-family="Arial" font-size="20" fill="black">GitHub Contributions</text>
-        <text x="10" y="50" font-family="Arial" font-size="14" fill="black">Contributions in the last 7 days:</text>
-        <text x="10" y="70" font-family="Arial" font-size="14" fill="black">{len(contributions)}</text>
-        <text x="10" y="100" font-family="Arial" font-size="20" fill="black">Programming Languages Used</text>
-        <text x="10" y="130" font-family="Arial" font-size="14" fill="black">Total Languages:</text>
-        <text x="10" y="150" font-family="Arial" font-size="14" fill="black">{languages_count}</text>
-        <text x="10" y="180" font-family="Arial" font-size="14" fill="black">Languages:</text>
-        <text x="10" y="200" font-family="Arial" font-size="14" fill="black">{", ".join(languages)}</text>
-    </svg>
+        <rect width="100%" height="100%" fill="rgb(10, 10, 30)"/>
+        <text x="10" y="20" font-family="Arial" font-size="20" fill="white">GitHub Contributions</text>
+        <text x="10" y="50" font-family="Arial" font-size="14" fill="white">Contributions in the last 7 days:</text>
+        <text x="10" y="70" font-family="Arial" font-size="14" fill="white">{len(contributions)}</text>
+        <text x="10" y="100" font-family="Arial" font-size="20" fill="white">Programming Languages Used</text>
+        <text x="10" y="130" font-family="Arial" font-size="14" fill="white">Total Languages:</text>
+        <text x="10" y="150" font-family="Arial" font-size="14" fill="white">{languages_count}</text>
+        <g transform="translate(300, 200)">
     """
+
+    start_angle = 0
+    for i, (language, angle) in enumerate(zip(languages.keys(), angles)):
+        end_angle = start_angle + angle
+        x1 = 100 * cos(radians(start_angle))
+        y1 = 100 * sin(radians(start_angle))
+        x2 = 100 * cos(radians(end_angle))
+        y2 = 100 * sin(radians(end_angle))
+        large_arc_flag = 1 if angle > 180 else 0
+
+        path_d = f"M0,0 L{x1},{y1} A100,100 0 {large_arc_flag},1 {x2},{y2} Z"
+        svg_content += f"""
+        <path d="{path_d}" fill="{colors[i]}" opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="{i * 0.5}s" fill="freeze"/>
+        </path>
+        <text x="{x2}" y="{y2}" font-family="Arial" font-size="14" fill="white">{language}</text>
+        """
+        start_angle += angle
+    
+    svg_content += "</g></svg>"
+
     with open("contributions.svg", "w") as svg_file:
         svg_file.write(svg_content)
 
@@ -84,6 +121,7 @@ def update_readme():
             if line.strip() == "<!-- START CONTRIBUTIONS -->":
                 in_marker = True
                 file.write(line)
+                file.write("## This is a 'Work In Progress'\n")
                 file.write("\n![Contributions](contributions.png)\n")
                 file.write("\n![Contributions](contributions.svg)\n")
             elif line.strip() == "<!-- END CONTRIBUTIONS -->":
