@@ -2,9 +2,10 @@
 
 ![Pretty Contributions](./profile-3d-contrib/profile-night-rainbow.svg)
 
+## Work In Progress
 <!-- START CONTRIBUTIONS -->
 
 ![Contributions](contributions.png)
-## Work In Progress
 Total Programming Languages Used: 4
-Languages: Python, JavaScript, Batchfile, Shell
+Languages: Python, JavaScript, Shell, Batchfile
+<!-- END CONTRIBUTIONS -->
