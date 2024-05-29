@@ -3,7 +3,7 @@ name: Generate Contribution Graphic
 on:
   push: # Trigger the workflow on each commit
     branches:
-      - main # or the branch you want to monitor
+      - main
   schedule:
     - cron: "0 0 * * *" # Runs every day at midnight
   workflow_dispatch:
