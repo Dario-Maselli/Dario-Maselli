@@ -1,11 +1,11 @@
 name: Generate Contribution Graphic
 
 on:
-  push: # Trigger the workflow on each commit
+  push:
     branches:
-      - main # or the branch you want to monitor
+      - main
   schedule:
-    - cron: "0 0 * * *" # Runs every day at midnight
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -32,17 +34,19 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 
+      - name: Configure git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Commit changes
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add README.md contributions.png
-          git commit -m 'Update contributions graphic'
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          git commit -m "Update contributions graphic"
 
       - name: Push changes
         run: |
-          git push https://${{ secrets.USERNAME }}:${{ secrets.PAT_TOKEN }}@github.com/${{ secrets.USERNAME }}/Dario-Maselli.git HEAD:main
+          git push origin HEAD:main
         env:
+          USERNAME: ${{ secrets.USERNAME }}
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
