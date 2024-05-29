@@ -6,6 +6,25 @@ from collections import defaultdict
 from math import cos, sin, radians, pi
 import random
 
+# Define a mapping of file extensions to programming languages
+extension_to_language = {
+    'py': 'Python',
+    'js': 'JavaScript',
+    'java': 'Java',
+    'rb': 'Ruby',
+    'php': 'PHP',
+    'cpp': 'C++',
+    'c': 'C',
+    'cs': 'C#',
+    'html': 'HTML',
+    'css': 'CSS',
+    'swift': 'Swift',
+    'go': 'Go',
+    'ts': 'TypeScript',
+    'kt': 'Kotlin',
+    'dart': 'Dart'
+}
+
 def get_contributions(username, token):
     g = Github(token)
     user = g.get_user(username)
@@ -46,8 +65,8 @@ def count_languages(username, token, organization=None):
             files = commit.files
             for file in files:
                 extension = file.filename.split('.')[-1]
-                language = repo.language_for_extension(extension)
-                if language not in exclude_languages:
+                language = extension_to_language.get(extension)
+                if language and language not in exclude_languages:
                     languages[language] += file.additions + file.deletions
 
     # Include organization repositories if specified
@@ -61,8 +80,8 @@ def count_languages(username, token, organization=None):
                 files = commit.files
                 for file in files:
                     extension = file.filename.split('.')[-1]
-                    language = repo.language_for_extension(extension)
-                    if language not in exclude_languages:
+                    language = extension_to_language.get(extension)
+                    if language and language not in exclude_languages:
                         languages[language] += file.additions + file.deletions
 
     # Get the top 5 languages by lines of code changed
