@@ -10,13 +10,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          persist-credentials: true
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -38,6 +38,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://${{ secrets.USERNAME }}:${{ secrets.PAT_TOKEN }}@github.com/${{ secrets.USERNAME }}/Dario-Maselli.git
 
       - name: Commit changes
         run: |
@@ -47,6 +48,3 @@ jobs:
       - name: Push changes
         run: |
           git push origin HEAD:main
-        env:
-          USERNAME: ${{ secrets.USERNAME }}
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
