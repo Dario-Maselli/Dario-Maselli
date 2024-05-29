@@ -11,7 +11,7 @@ def get_contributions(username, token):
     contributions = []
 
     for event in events:
-        if event.created_at.date() > datetime.datetime.now().date() - datetime.timedelta(days=30):
+        if event.created_at.date() > datetime.datetime.now().date() - datetime.timedelta(days=7):
             contributions.append(event.created_at)
 
     return contributions
@@ -26,7 +26,7 @@ def plot_contributions(contributions):
 
     plt.xlabel('Date')
     plt.ylabel('Contributions')
-    plt.title('GitHub Contributions in the Last 30 Days')
+    plt.title('GitHub Contributions in the Last 7 Days')
 
     plt.savefig('contributions.png')
 
