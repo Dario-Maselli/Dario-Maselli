@@ -7,4 +7,4 @@
 ![Contributions](contributions.png)
 ## Work In Progress
 Total Programming Languages Used: 4
-Languages: Python, Batchfile, Shell, JavaScript
+Languages: Python, JavaScript, Batchfile, Shell
