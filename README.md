@@ -8,7 +8,7 @@
 
 ![Contributions](contributions.png)
 
-Total Programming Languages Used: 18
+Total Programming Languages Used: 14
 
-Languages: Dockerfile, Objective-C, Shell, CSS, Swift, Blade, Ruby, JavaScript, Dart, C++, Kotlin, PHP, C, HTML, Vue, Batchfile, Python, CMake
+Languages: HTML, Dart, CSS, Python, CMake, PHP, JavaScript, Kotlin, Shell, Swift, Batchfile, C++, Vue, Dockerfile
 <!-- END CONTRIBUTIONS -->
