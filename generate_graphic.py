@@ -52,6 +52,10 @@ if __name__ == "__main__":
     username = os.getenv('USERNAME')
     token = os.getenv('PAT_TOKEN')
 
+    if not username or not token:
+        raise ValueError(
+            "USERNAME and PAT_TOKEN must be set as environment variables.")
+
     contributions = get_contributions(username, token)
     plot_contributions(contributions)
     update_readme()
