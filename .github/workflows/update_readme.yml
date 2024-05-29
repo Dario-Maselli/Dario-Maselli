@@ -10,11 +10,12 @@ on:
 
 jobs:
   build:
+    if: github.event.head_commit.author.name != 'github-actions[bot]'
     runs-on: self-hosted
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
         with:
           persist-credentials: false
 
@@ -53,7 +54,7 @@ jobs:
           else
             git commit -m "Update contributions graphic"
           fi
-
+            
       - name: Push changes
         run: |
           git push origin HEAD:main
