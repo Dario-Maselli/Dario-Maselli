@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from github import Github
 import datetime
 import os
-from math import cos, sin, radians
+from math import cos, sin, radians, pi
 import random
 
 def get_contributions(username, token):
@@ -65,7 +65,11 @@ def count_languages(username, token, organization=None):
                             else:
                                 languages[language] = bytes_of_code
 
-    return len(languages), languages
+    # Get the top 5 languages by bytes of code
+    sorted_languages = sorted(languages.items(), key=lambda item: item[1], reverse=True)[:5]
+    top_languages = {language: bytes_of_code for language, bytes_of_code in sorted_languages}
+
+    return len(top_languages), top_languages
 
 def generate_color():
     return "#{:06x}".format(random.randint(0, 0xFFFFFF))
@@ -103,11 +107,15 @@ def create_svg(contributions, languages_count, languages):
         large_arc_flag = 1 if angle > 180 else 0
 
         path_d = f"M0,0 L{x1},{y1} A100,100 0 {large_arc_flag},1 {x2},{y2} Z"
+        mid_angle = start_angle + (angle / 2)
+        label_x = 120 * cos(radians(mid_angle))
+        label_y = 120 * sin(radians(mid_angle))
+        
         svg_content += f"""
         <path d="{path_d}" fill="{colors[i]}" opacity="0">
             <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="{i * 0.5}s" fill="freeze"/>
         </path>
-        <text x="{x2}" y="{y2}" font-family="Arial" font-size="14" fill="white">{language}</text>
+        <text x="{label_x}" y="{label_y}" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">{language}</text>
         """
         start_angle += angle
     
