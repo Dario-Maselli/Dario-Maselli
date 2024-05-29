@@ -28,16 +28,29 @@ def plot_contributions(contributions):
 
     plt.savefig('contributions.png')
 
-def count_languages(username, token):
+def count_languages(username, token, organization=None):
     g = Github(token)
+    languages = set()
+
+    # Include user repositories
     user = g.get_user(username)
     repos = user.get_repos()
-    languages = set()
 
     for repo in repos:
         repo_languages = repo.get_languages()
         for language in repo_languages.keys():
             languages.add(language)
+
+    # Include organization repositories if specified
+    if organization:
+        org = g.get_organization(organization)
+        org_repos = org.get_repos()
+        for repo in org_repos:
+            contributors = repo.get_contributors()
+            if any(contributor.login == username for contributor in contributors):
+                repo_languages = repo.get_languages()
+                for language in repo_languages.keys():
+                    languages.add(language)
 
     return len(languages), languages
 
@@ -63,6 +76,7 @@ def update_readme(languages_count, languages):
 if __name__ == "__main__":
     username = os.getenv('USERNAME')
     token = os.getenv('PAT_TOKEN')
+    organization = 'sinov8'
 
     if not username or not token:
         raise ValueError("USERNAME and PAT_TOKEN must be set as environment variables.")
@@ -70,5 +84,5 @@ if __name__ == "__main__":
     contributions = get_contributions(username, token)
     plot_contributions(contributions)
     
-    languages_count, languages = count_languages(username, token)
+    languages_count, languages = count_languages(username, token, organization)
     update_readme(languages_count, languages)
