@@ -60,21 +60,7 @@ def count_languages(username, token, organization=None):
     repos = user.get_repos()
 
     for repo in repos:
-        commits = repo.get_commits(author=username)
-        for commit in commits:
-            files = commit.files
-            for file in files:
-                extension = file.filename.split('.')[-1]
-                language = extension_to_language.get(extension)
-                if language and language not in exclude_languages:
-                    languages[language] += file.additions + file.deletions
-
-    # Include organization repositories if specified
-    if organization:
-        org = g.get_organization(organization)
-        print("Organization Repositories:")
-        for repo in org.get_repos(type='all'):
-            print(repo.name)
+        try:
             commits = repo.get_commits(author=username)
             for commit in commits:
                 files = commit.files
@@ -83,6 +69,26 @@ def count_languages(username, token, organization=None):
                     language = extension_to_language.get(extension)
                     if language and language not in exclude_languages:
                         languages[language] += file.additions + file.deletions
+        except Exception as e:
+            print(f"Skipping repository {repo.name} due to error: {e}")
+
+    # Include organization repositories if specified
+    if organization:
+        org = g.get_organization(organization)
+        print("Organization Repositories:")
+        for repo in org.get_repos(type='all'):
+            print(repo.name)
+            try:
+                commits = repo.get_commits(author=username)
+                for commit in commits:
+                    files = commit.files
+                    for file in files:
+                        extension = file.filename.split('.')[-1]
+                        language = extension_to_language.get(extension)
+                        if language and language not in exclude_languages:
+                            languages[language] += file.additions + file.deletions
+            except Exception as e:
+                print(f"Skipping repository {repo.name} due to error: {e}")
 
     # Get the top 5 languages by lines of code changed
     sorted_languages = sorted(languages.items(), key=lambda item: item[1], reverse=True)[:5]
