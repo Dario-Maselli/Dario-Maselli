@@ -1,5 +1,5 @@
 
-    <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+    <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
         <rect width="100%" height="100%" fill="rgb(10, 10, 30)"/>
         <text x="10" y="20" font-family="Arial" font-size="20" fill="white">GitHub Contributions</text>
         <text x="10" y="50" font-family="Arial" font-size="14" fill="white">Contributions in the last 7 days:</text>
@@ -33,4 +33,13 @@
             <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.0s" fill="freeze"/>
         </path>
         <text x="119.95793291429658" y="-3.177157680872034" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">CSS</text>
-        </g></svg>
+        </g>
+        <g transform="translate(100, 350)">
+            <rect x="0" y="37.68115942028986" width="4" height="62.31884057971014" fill="#66b3ff"/>
+<rect x="5" y="31.884057971014485" width="4" height="68.11594202898551" fill="#66b3ff"/>
+<rect x="10" y="37.68115942028986" width="4" height="62.31884057971014" fill="#66b3ff"/>
+<rect x="15" y="73.91304347826087" width="4" height="26.08695652173913" fill="#66b3ff"/>
+<rect x="20" y="0.0" width="4" height="100.0" fill="#66b3ff"/>
+        </g>
+    </svg>
+    
