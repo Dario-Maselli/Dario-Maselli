@@ -31,6 +31,7 @@ def plot_contributions(contributions):
 def count_languages(username, token, organization=None):
     g = Github(token)
     languages = set()
+    exclude_languages = {'Ruby', 'Objective-C', 'Blade', 'C'}  # Set of languages to exclude
 
     # Include user repositories
     user = g.get_user(username)
@@ -39,7 +40,8 @@ def count_languages(username, token, organization=None):
     for repo in repos:
         repo_languages = repo.get_languages()
         for language in repo_languages.keys():
-            languages.add(language)
+            if language not in exclude_languages:
+                languages.add(language)
 
     # Include organization repositories if specified
     if organization:
@@ -52,7 +54,8 @@ def count_languages(username, token, organization=None):
                 if contributor.login == username:
                     repo_languages = repo.get_languages()
                     for language in repo_languages.keys():
-                        languages.add(language)
+                        if language not in exclude_languages:
+                            languages.add(language)
 
     return len(languages), languages
 
