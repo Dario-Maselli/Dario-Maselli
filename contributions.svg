@@ -3,34 +3,34 @@
         <rect width="100%" height="100%" fill="rgb(10, 10, 30)"/>
         <text x="10" y="20" font-family="Arial" font-size="20" fill="white">GitHub Contributions</text>
         <text x="10" y="50" font-family="Arial" font-size="14" fill="white">Contributions in the last 7 days:</text>
-        <text x="10" y="70" font-family="Arial" font-size="14" fill="white">198</text>
+        <text x="10" y="70" font-family="Arial" font-size="14" fill="white">220</text>
         <text x="10" y="100" font-family="Arial" font-size="20" fill="white">Programming Languages Used</text>
         <text x="10" y="130" font-family="Arial" font-size="14" fill="white">Total Languages:</text>
         <text x="10" y="150" font-family="Arial" font-size="14" fill="white">5</text>
         <g transform="translate(300, 200)">
     
-        <path d="M0,0 L100.0,0.0 A100,100 0 0,1 -99.20714403815391,12.567520510943368 Z" fill="#ff9999" opacity="0">
+        <path d="M0,0 L100.0,0.0 A100,100 0 1,1 80.33572363648275,-59.549739779470634 Z" fill="#ff9999" opacity="0">
             <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.0s" fill="freeze"/>
         </path>
-        <text x="7.55550324286332" y="119.76190701031393" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">PHP</text>
+        <text x="-113.94811144475699" y="37.627488597742506" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">Dart</text>
         
-        <path d="M0,0 L-99.20714403815391,12.567520510943368 A100,100 0 0,1 -23.538416089431816,-97.19024111504599 Z" fill="#66b3ff" opacity="0">
+        <path d="M0,0 L80.33572363648275,-59.549739779470634 A100,100 0 0,1 98.00162906022712,-19.891724448665776 Z" fill="#66b3ff" opacity="0">
             <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.5s" fill="freeze"/>
         </path>
-        <text x="-98.7965887900266" y="-68.11192291702231" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">Vue</text>
+        <text x="109.61618966587761" y="-48.82920195061911" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">Python</text>
         
-        <path d="M0,0 L-23.538416089431816,-97.19024111504599 A100,100 0 0,1 69.49681391575217,-71.90405312330672 Z" fill="#99ff99" opacity="0">
+        <path d="M0,0 L98.00162906022712,-19.891724448665776 A100,100 0 0,1 99.24643293347579,-12.253389326267705 Z" fill="#99ff99" opacity="0">
             <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.0s" fill="freeze"/>
         </path>
-        <text x="31.473220810869194" y="-115.79912077295867" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">Dart</text>
+        <text x="118.43754119592715" y="-19.30152417461005" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">Java</text>
         
-        <path d="M0,0 L69.49681391575217,-71.90405312330672 A100,100 0 0,1 97.54362189836593,-22.028205259362977 Z" fill="#ffcc99" opacity="0">
+        <path d="M0,0 L99.24643293347579,-12.253389326267705 A100,100 0 0,1 99.85980095931772,-5.293406499169186 Z" fill="#ffcc99" opacity="0">
             <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.5s" fill="freeze"/>
         </path>
-        <text x="104.59655186937285" y="-58.818035814175204" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">Blade</text>
+        <text x="119.53670626603825" y="-10.534507822717263" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">PHP</text>
         
-        <path d="M0,0 L97.54362189836593,-22.028205259362977 A100,100 0 0,1 100.0,-2.4492935982947064e-14 Z" fill="#c2c2f0" opacity="0">
+        <path d="M0,0 L99.85980095931772,-5.293406499169186 A100,100 0 0,1 100.0,-1.1331077795295959e-13 Z" fill="#c2c2f0" opacity="0">
             <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.0s" fill="freeze"/>
         </path>
-        <text x="119.26080989445923" y="-13.298842931535617" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">Python</text>
+        <text x="119.95793291429658" y="-3.177157680872034" font-family="Arial" font-size="14" fill="white" text-anchor="middle" alignment-baseline="middle">CSS</text>
         </g></svg>
