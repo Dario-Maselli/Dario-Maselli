@@ -3,6 +3,7 @@ from github import Github
 import datetime
 import os
 from math import cos, sin, radians
+import random
 
 def get_contributions(username, token):
     g = Github(token)
@@ -66,10 +67,14 @@ def count_languages(username, token, organization=None):
 
     return len(languages), languages
 
+def generate_color():
+    return "#{:06x}".format(random.randint(0, 0xFFFFFF))
+
 def create_svg(contributions, languages_count, languages):
     # Define colors for the pie chart
     colors = ["#ff9999","#66b3ff","#99ff99","#ffcc99","#c2c2f0","#ffb3e6","#c2f0c2","#ff6666"]
-    colors = colors[:languages_count]
+    while len(colors) < languages_count:
+        colors.append(generate_color())
     
     # Calculate the pie chart data
     total = sum(languages.values())
@@ -115,7 +120,7 @@ def update_readme():
     with open("README.md", "r") as file:
         lines = file.readlines()
 
-    with open("README.md", "w") as file:
+    with open("README.md", "w") as file):
         in_marker = False
         for line in lines:
             if line.strip() == "<!-- START CONTRIBUTIONS -->":
