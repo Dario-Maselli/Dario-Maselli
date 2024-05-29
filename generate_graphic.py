@@ -45,6 +45,7 @@ def count_languages(username, token, organization=None):
     if organization:
         org = g.get_organization(organization)
         org_repos = org.get_repos()
+        print(org_repos)
         for repo in org_repos:
             contributors = repo.get_contributors()
             print(contributors)
@@ -65,11 +66,11 @@ def update_readme(languages_count, languages):
         for line in lines:
             if line.strip() == "<!-- START CONTRIBUTIONS -->":
                 in_marker = True
-                file.write("## Work In Progress\n")
                 file.write(line)
+                file.write("## This is a 'Work In Progress'\n")
                 file.write("\n![Contributions](contributions.png)\n")
-                file.write(f"Total Programming Languages Used: {languages_count}\n")
-                file.write("Languages: " + ", ".join(languages) + "\n")
+                file.write(f"\nTotal Programming Languages Used: {languages_count}\n")
+                file.write("\nLanguages: " + ", ".join(languages) + "\n")
             elif line.strip() == "<!-- END CONTRIBUTIONS -->":
                 in_marker = False
             elif not in_marker:
