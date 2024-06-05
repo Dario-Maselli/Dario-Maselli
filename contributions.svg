@@ -3,11 +3,11 @@
         <rect width="100%" height="100%" fill="white"/>
         <text x="10" y="20" font-family="Arial" font-size="20" fill="black">GitHub Contributions</text>
         <text x="10" y="50" font-family="Arial" font-size="14" fill="black">Contributions in the last 7 days:</text>
-        <text x="10" y="70" font-family="Arial" font-size="14" fill="black">169</text>
+        <text x="10" y="70" font-family="Arial" font-size="14" fill="black">133</text>
         <text x="10" y="100" font-family="Arial" font-size="20" fill="black">Programming Languages Used</text>
         <text x="10" y="130" font-family="Arial" font-size="14" fill="black">Total Languages:</text>
         <text x="10" y="150" font-family="Arial" font-size="14" fill="black">16</text>
         <text x="10" y="180" font-family="Arial" font-size="14" fill="black">Languages:</text>
-        <text x="10" y="200" font-family="Arial" font-size="14" fill="black">Vue, Shell, Dart, CSS, Python, Kotlin, CMake, PHP, Dockerfile, C++, Batchfile, Blade, C, Swift, HTML, JavaScript</text>
+        <text x="10" y="200" font-family="Arial" font-size="14" fill="black">Blade, JavaScript, Swift, Batchfile, C++, HTML, CSS, Shell, PHP, CMake, Dockerfile, C, Vue, Kotlin, Python, Dart</text>
     </svg>
     
