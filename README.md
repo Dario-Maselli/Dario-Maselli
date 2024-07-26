@@ -2,9 +2,10 @@
 
 ![Pretty Contributions](./profile-3d-contrib/profile-night-rainbow.svg)
 
-## Work In Progress
+<!-- ## Work In Progress -->
+
 <!-- START CONTRIBUTIONS -->
 
-![Contributions](contributions.png)
+<!-- ![Contributions](contributions.png) -->
 
-![Contributions](contributions.svg)
+<!-- ![Contributions](contributions.svg) -->

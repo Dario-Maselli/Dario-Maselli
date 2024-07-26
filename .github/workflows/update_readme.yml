@@ -32,11 +32,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install matplotlib PyGithub
 
-      - name: Run script
-        run: python generate_graphic.py
-        env:
-          USERNAME: ${{ github.repository_owner }}
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      # - name: Run script
+      #   run: python generate_graphic.py
+      #   env:
+      #     USERNAME: ${{ github.repository_owner }}
+      #     PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Configure git
         run: |
@@ -52,7 +52,7 @@ jobs:
           else
             git commit -m "Update contributions graphic"
           fi
-            
+
       - name: Push changes
         run: |
           git push origin HEAD:main
