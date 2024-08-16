@@ -17,11 +17,6 @@ jobs:
         with:
           persist-credentials: false
 
-      # Temporarily change PowerShell execution policy using Windows PowerShell
-      - name: Set PowerShell Execution Policy to Bypass
-        run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-        shell: powershell
-
       - uses: yoshi389111/github-profile-3d-contrib@0.7.1
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
@@ -32,7 +27,14 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://${{ github.repository_owner }}:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository_owner }}/${{ github.repository_owner }}.git
-        shell: powershell
+        shell: cmd
 
       - name: Commit changes
         run: |
+          git add -A .
+          git diff-index --quiet HEAD || git commit -m "Update contributions graphic"
+        shell: cmd
+
+      - name: Push changes
+        run: git push origin HEAD:main
+        shell: cmd
