@@ -1,14 +1,12 @@
 name: Generate Contribution Graphic
 
 on:
-  push:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
   build:
-    if: github.event.head_commit.author.name != 'github-actions[bot]'
     runs-on: self-hosted
 
     steps:
