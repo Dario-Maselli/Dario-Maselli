@@ -22,10 +22,9 @@ I enjoy all things space… and when I’m not pushing a release, I’m probably
 ---
 
 ## What I’m focused on right now
-- 🚀 **RedRabbit**… production-grade mobile… Laravel backend… sharp workflows  
+- 🚀 **Parket**… production-grade mobile… Django backend… sharp workflows  
 - 🧪 **Testing**… unit… widget… integration… mocks that tell the truth  
 - 🛠️ **Pipelines**… Fastlane… Shorebird… signed iOS builds… Play Console flows  
-- 🧰 **Tooling**… **Ribbit** (Dart CLI for project bootstrap)… repeatability over ritual
 
 ---
 
