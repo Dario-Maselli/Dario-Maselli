@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Build-Automation-red?style=for-the-badge&logo=githubactions" />
   <img src="https://img.shields.io/badge/Flutter-Latest-black?style=for-the-badge&logo=flutter" />
-  <img src="https://img.shields.io/badge/Laravel-Forge-grey?style=for-the-badge&logo=laravel" />
+  <img src="https://img.shields.io/badge/Django-grey?style=for-the-badge&logo=django" />
 </p>
 
 <h1 align="center">Welcome to my Github Profile!</h1>
